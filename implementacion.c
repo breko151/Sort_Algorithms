@@ -4,23 +4,30 @@
 #include "random_generation.h"
 
 void makeRandom(int **newArray, int sizeArray);
-void procedimiento();
+void procedure();
+void printArray(int *newArray, int sizeArray);
 
 int main(int argc, char **argv) {
-    procedimiento();
+    procedure();
     return 0;
 }
 
-void procedimiento() {
+void procedure() {
     printf("Bienvenido...");
     int *randomArray = NULL;
     int sizeArray = 0;
-    printf("\nTamano del vector: ");
-    scanf("%d", &sizeArray);
-    makeRandom(&randomArray, sizeArray);
-    printf("\n");
-    for(int i = 0; i < sizeArray; i++) {
-        printf("[%d] = %d\n", i, randomArray[i]);
+    int opc = 0;
+    char resp = 's';
+    while(resp == 's' || resp == 'S') {
+        printf("\nTamano del vector: ");
+        scanf("%d", &sizeArray);
+        makeRandom(&randomArray, sizeArray);
+        printf("\n");
+        printArray(randomArray, sizeArray);
+        fflush(stdin);
+        fflush(stdout);
+        printf("\nDesea probar otro ordenamiento? [s/n]: ");
+        scanf("%c", &resp);
     }
 }
 
@@ -38,4 +45,11 @@ void makeRandom(int **newArray, int sizeArray) {
     myArray = random_gen(sizeArray, randomRange);
     *newArray = myArray;
     printf("Random generado...");
+}
+
+void printArray(int *newArray, int sizeArray) {
+    printf("\n");
+    for(int i = 0; i < sizeArray; i++) {
+        printf("array[%d] = %d\n", i, newArray[i]);
+    }
 }
