@@ -2,6 +2,7 @@
 //Fecha: 27/07/2021
 
 #include "random_generation.h"
+#include "sort.h"
 
 void makeRandom(int **newArray, int sizeArray);
 void procedure();
@@ -23,6 +24,29 @@ void procedure() {
         scanf("%d", &sizeArray);
         makeRandom(&randomArray, sizeArray);
         printf("\n");
+        printArray(randomArray, sizeArray);
+        fflush(stdin);
+        fflush(stdout);
+        printf("Algoritmos de Ordenamiento:");
+        printf("\n1. Ordenamiento Burbuja");
+        printf("\n2. Ordenamiento por Seleccion");
+        printf("\n3. Ordenamiento por Insercion");
+        printf("\nEscoga un numero: ");
+        scanf("%d", &opc);
+        switch (opc) {
+            case 1:
+                bubbleSort(randomArray, sizeArray);
+                break;
+            case 2:
+                selectionSort(randomArray, sizeArray);
+                break;
+            case 3:
+                insertionSort(randomArray, sizeArray);
+                break;
+            default:
+                printf("\nOpcion Incorrecta, escriba bien...");
+                break;
+        }
         printArray(randomArray, sizeArray);
         fflush(stdin);
         fflush(stdout);
