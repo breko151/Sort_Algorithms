@@ -19,9 +19,9 @@ void procedure() {
     int sizeArray = 0;
     int opc = 0;
     char resp = 's';
+    printf("\nTamano del vector: ");
+    scanf("%d", &sizeArray);
     while(resp == 's' || resp == 'S') {
-        printf("\nTamano del vector: ");
-        scanf("%d", &sizeArray);
         makeRandom(&randomArray, sizeArray);
         printf("\n");
         printArray(randomArray, sizeArray);
@@ -53,22 +53,23 @@ void procedure() {
         printf("\nDesea probar otro ordenamiento? [s/n]: ");
         scanf("%c", &resp);
     }
+    free(randomArray);
 }
 
 void makeRandom(int **newArray, int sizeArray) {
     int *myArray = NULL;
+    myArray = (int *) malloc(sizeof(int) * sizeArray);
     int randomRange = 0;
     printf("Rango del Random: ");
     scanf("%d", &randomRange);
-    myArray = (int *) malloc(sizeof(int) * sizeArray);
-    if(newArray == NULL) {
+    if(myArray == NULL) {
         printf("Hubo un error...");
         printf("\nSaldrá del programa...");
         exit(1);
     }
     myArray = random_gen(sizeArray, randomRange);
     *newArray = myArray;
-    printf("Random generado...");
+    printf("\nRandom generado...");
 }
 
 void printArray(int *newArray, int sizeArray) {
