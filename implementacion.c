@@ -33,6 +33,7 @@ void procedure() {
         printf("\n1. Ordenamiento Burbuja");
         printf("\n2. Ordenamiento por Seleccion");
         printf("\n3. Ordenamiento por Insercion");
+        printf("\n4. Ordenamiento por Mezcla");
         printf("\nEscoga un numero: ");
         scanf("%d", &opc);
         begin = clock();
@@ -45,6 +46,9 @@ void procedure() {
                 break;
             case 3:
                 insertionSort(randomArray, sizeArray);
+                break;
+            case 4:
+                mergeSort(randomArray, sizeArray);
                 break;
             default:
                 printf("\nOpcion Incorrecta, escriba bien...");

@@ -6,3 +6,5 @@
 void bubbleSort(int *array, int sizeArray);
 void insertionSort(int *array, int sizeArray);
 void selectionSort(int *array, int sizeArray);
+void mergeSort(int *array, int sizeArray);
+void merge(int *array, int *firstArray, int *secondArray, int firstSize, int secondSize);

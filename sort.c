@@ -48,3 +48,50 @@ void selectionSort(int *array, int sizeArray) {
         array[min] = aux;
     }
 }
+
+void mergeSort(int *array, int sizeArray) {
+    if(sizeArray < 2) {
+        return;
+    }
+    else {
+        int firstSize = sizeArray / 2;
+        int secondSize = sizeArray - firstSize;
+        int firstArray[firstSize];
+        int secondArray[secondSize];
+        for(int i = 0; i < firstSize; i++) { 
+            firstArray[i] = array[i];
+        }
+        for(int i = firstSize, j = 0; i < sizeArray; i++, j++) {
+            secondArray[j] = array[i];
+        }
+        mergeSort(firstArray, firstSize);
+        mergeSort(secondArray, secondSize);
+        merge(array, firstArray, secondArray, firstSize, secondSize);
+    }
+}
+
+void merge(int *array, int *firstArray, int *secondArray, int firstSize, int secondSize) {
+    int first = 0;
+    int second = 0;
+    int final = 0;
+    while(first < firstSize && second < secondSize) {
+        if(firstArray[first] < secondArray[second]) {
+            array[final] = firstArray[first];
+            first++;
+        } else {
+            array[final] = secondArray[second];
+            second++;
+        }
+        final++;
+    }
+    while(first < firstSize) {
+        array[final] = firstArray[first];
+        first++;
+        final++;
+    }
+    while(second < secondSize) {
+        array[final] = secondArray[second];
+        second++;
+        final++;
+    }
+}
