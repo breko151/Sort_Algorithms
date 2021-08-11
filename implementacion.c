@@ -1,5 +1,5 @@
 //Autor: Suárez Pérez Juan Pablo
-//Fecha: 27/07/2021
+//Fecha: 11/08/2021
 
 #include "random_generation.h"
 #include "sort.h"
@@ -19,6 +19,8 @@ void procedure() {
     int sizeArray = 0;
     int opc = 0;
     char resp = 's';
+    double enlapsed;
+    clock_t begin, end;
     printf("\nTamano del vector: ");
     scanf("%d", &sizeArray);
     while(resp == 's' || resp == 'S') {
@@ -33,6 +35,7 @@ void procedure() {
         printf("\n3. Ordenamiento por Insercion");
         printf("\nEscoga un numero: ");
         scanf("%d", &opc);
+        begin = clock();
         switch (opc) {
             case 1:
                 bubbleSort(randomArray, sizeArray);
@@ -48,6 +51,9 @@ void procedure() {
                 break;
         }
         printArray(randomArray, sizeArray);
+        end = clock();
+        enlapsed = (double) (end - begin) / CLOCKS_PER_SEC;
+        printf("\nEl Tiempo en segundos que se tardo la opcion %d es: %.3f", opc, enlapsed);
         fflush(stdin);
         fflush(stdout);
         printf("\nDesea probar otro ordenamiento? [s/n]: ");
