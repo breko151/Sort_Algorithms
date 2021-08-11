@@ -1,5 +1,5 @@
 //Autor: Suárez Pérez Juan Pablo
-//Fecha: 27/07/2021
+//Fecha: 11/08/2021
 
 #include "sort.h"
 
@@ -39,8 +39,9 @@ void selectionSort(int *array, int sizeArray) {
     for(i = 0; i < sizeArray; i++) {
         min = i;
         for(j = i + 1; j < sizeArray; j++) {
-            if(array[j] < array[i])
+            if(array[j] < array[min]) {
                 min = j;
+            }
         }
         aux = array[i];
         array[i] = array[min];
