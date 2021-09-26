@@ -95,3 +95,31 @@ void merge(int *array, int *firstArray, int *secondArray, int firstSize, int sec
         final++;
     }
 }
+
+void quickSort(int *array, int p, int r) {
+    if(p < r) {
+        int q = partition(array, p, r);
+        quickSort(array, p, q - 1);
+        quickSort(array, q + 1, r);
+    }
+}
+
+int partition(int *array, int p, int r) {
+    int x  = array[r];
+    int i = p - 1;                  
+    int aux = 0;                    //Variable auxiliar que permitira hacer el cambio de entre valores
+    for(int j = p; j < r; j++) {
+        if(array[j] <= x) {
+            i = i + 1;
+            //Intercambio de valores para A[i] y A[j]
+            aux = array[i];
+            array[i] = array[j];
+            array[j] = aux;
+        }
+    }
+    //Intercambio con la el valor en la posición final
+    aux = array[i + 1];
+    array[i + 1] = array[r];
+    array[r] = aux;
+    return i + 1;
+}
